@@ -1,0 +1,60 @@
+MILESTONE 1:
+CREATE TABLE TEAMDETAILS (
+	Sno int,
+	Team_name varchar(20),
+	Captain varchar(20),
+	Owner varchar(20),
+	Home_Ground varchar(20)
+)
+drop table teamdetails
+CREATE TABLE fixtures (
+	Match_Number int,
+	Home_Team_name varchar(20),
+	Away_Team_name varchar(20),
+	Venue varchar(20),
+	Team_Won varchar(20),
+	Team_Lost varchar(20)
+)
+
+CREATE TABLE points (
+	Team_name varchar(20), 
+	No_of_wins int, 
+	No_of_loss int, 
+	Points int
+);
+ 
+
+MILESTONE 2:
+COPY TEAMDETAILS FROM 
+'C:\Users\Public\team-details (2).csv' 
+DELIMITER ',' CSV HEADER;
+ 
+Select * from teamdetails
+ 
+
+select count(sno) from teamdetails
+ 
+
+
+MILESTONE 3:
+COPY fixtures FROM 
+'C:\Users\Public\Fixtures (2).csv' 
+DELIMITER ',' CSV HEADER;
+ 
+
+MILESTONE 4:
+SELECT match_number, venue from 
+fixtures inner join teamdetails
+on teamdetails.Home_Ground = fixtures.venue 
+where venue = 'Bangalore'
+ 
+MILESTONE 5:
+select team_lost from fixtures
+where venue = 'Kolkata'
+ 
+
+MILESTONE 6:
+insert into points (team_name)
+select distinct team_won from fixtures as f inner join 
+teamdetails as t on f.team_won = t.team_name
+ 
