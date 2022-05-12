@@ -58,3 +58,4 @@ insert into points (team_name)
 select distinct team_won from fixtures as f inner join 
 teamdetails as t on f.team_won = t.team_name
  
+made some change
